@@ -45,4 +45,4 @@ Type: `string`
 Enter a valid media URL to cast
 
 ## License
-[MIT](../blob/master/LICENSE)
+[MIT](https://github.com/taeukme/google-home-push/blob/master/README.md)
