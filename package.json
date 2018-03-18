@@ -1,0 +1,17 @@
+{
+  "name": "google-home-push",
+  "version": "1.0.0",
+  "description": "Send push notifications to your Google Home device.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Taeuk Kang",
+  "license": "MIT",
+  "dependencies": {
+    "castv2-client": "^1.2.0",
+    "google-tts-api": "0.0.2",
+    "is-ip": "^2.0.0",
+    "mdns": "^2.3.4"
+  }
+}
