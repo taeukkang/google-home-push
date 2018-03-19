@@ -8,6 +8,15 @@
   },
   "author": "Taeuk Kang",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/taeukme/google-home-push"
+  },
+  "keywords": [
+    "google home",
+    "push",
+    "notifications"
+  ],
   "dependencies": {
     "castv2-client": "^1.2.0",
     "google-tts-api": "0.0.2",
