@@ -17,6 +17,18 @@ myHome.speak("Hello world!");
 myHome.push("https://example.com/music.mp3");
 ```
 
+## Example
+### Using another language
+```
+let options = {
+    language: 'ko'
+};
+
+const myHome = new GoogleHome("Living Room Home", options);
+myHome.speak("안녕하세요!");
+```
+Pass the `language` option from the [ISO 639-1 Code](https://www.loc.gov/standards/iso639-2/php/code_list.php). The default is left as English.
+
 ## API
 ### new GoogleHome(deviceIdentifier, [options])
 Creates an `instantce` of GoogleHome.
