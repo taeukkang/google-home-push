@@ -52,9 +52,9 @@ class GoogleHome {
         });
     }
 
-    async speak(message) {
+    async speak(message, language) {
         return new Promise((resolve, reject) => {
-            googleTTS(message, this.options.language, 1, 3000, this.options.accent).then((url) => {
+            googleTTS(message, language ? language : this.options.language, 1, 3000, this.options.accent).then((url) => {
                 debug('pushing Google TTS speech data');
                 this.push(url)
                     .then(resolve)
