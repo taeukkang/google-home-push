@@ -18,16 +18,17 @@ myHome.push("https://example.com/music.mp3");
 ```
 
 ## Example
-### Using another language
+### Using different languages
 ```
 let options = {
-    language: 'ko'
+    language: "ko"
 };
 
-const myHome = new GoogleHome("Living Room Home", options);
-myHome.speak("안녕하세요!");
+const myHome = new GoogleHome("192.168.0.1", options);
+myHome.speak("안녕하세요!");           // Will speak in Korean as it follows the options
+myHome.speak("Bonjour!", "fr");     // Will speak in French as the optional language argument is passed
 ```
-Pass the `language` option from the [ISO 639-1 Code](https://www.loc.gov/standards/iso639-2/php/code_list.php). The default is left as English.
+Pass the `language` option from the [following list](https://cloud.google.com/translate/docs/languages). The default is set as English.
 
 ## API
 ### new GoogleHome(deviceIdentifier, [options])
@@ -39,22 +40,25 @@ Accepts valid IP addresses or device name.
 
 #### options
 Type: `Object`
+| Property | Type | Default | Description |
+|----------|------|---------|-------------|
+| language | string | `en` | Default language that would be used by the `.speak()` function |
+| accent | string | `en` | Default accent that would be used by the `.speak()` function |
 
-##### language
-Default: `en`
-
-##### accent
-Default: `en`
-
-### .speak(message)
+### .speak(message, [language])
 #### message
 Type: `string`
-Input what you want to notify
+Text that would be notified using the Google TTS
+
+#### language
+Type: `string`
+Language that would be used to TTS the message. If one is not passed, then it would fall back to one set in the options.
+Pass the `language` option from the [following list](https://cloud.google.com/translate/docs/languages).
 
 ### .push(url)
 #### url
 Type: `string`
-Enter a valid media URL to cast
+A valid media URL that would be cast
 
 ## License
 [MIT](https://github.com/taeukme/google-home-push/blob/master/LICENSE.md)
