@@ -49,6 +49,11 @@ class GoogleHome {
   }
 
   async speak(message, language) {
+    if (!message) {
+      console.error('.speak(): The text to speak cannot be empty');
+      return false;
+    }
+
     return new Promise((resolve, reject) => {
       googleTTS(
         message,
@@ -63,6 +68,8 @@ class GoogleHome {
             .catch(reject);
         })
         .catch(reject);
+    }).catch(reject => {
+      console.error(reject);
     });
   }
 
