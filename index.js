@@ -50,7 +50,7 @@ class GoogleHome {
 
   async speak(message, language) {
     if (!message) {
-      console.error('.speak(): The text to speak cannot be empty');
+      console.error(".speak(): The text to speak cannot be empty");
       return false;
     }
 
