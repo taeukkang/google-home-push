@@ -42,7 +42,9 @@ class GoogleHome {
         if (service.txtRecord.fn.includes(name)) {
           resolve(address);
         } else {
-          return reject("Unable to find device");
+          setTimeout(function(){
+            return reject("Unable to find device");
+          },5000)
         }
       });
     });
