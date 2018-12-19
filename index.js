@@ -24,6 +24,8 @@ class GoogleHome {
       this.options.language === undefined ? "en" : options.language;
     this.options.accent =
       this.options.accent === undefined ? "en" : options.accent;
+
+    this.options.timeout = this.options.timeout === undefined ? 5000 : options.timeout;
   }
 
   searchDevice(name = this.device.name) {
@@ -41,10 +43,12 @@ class GoogleHome {
 
         if (service.txtRecord.fn.includes(name)) {
           resolve(address);
-        } else {
-          return reject("Unable to find device");
         }
       });
+
+      setTimeout(() => {
+        reject(`.searchDevice(): Search timeout`);
+      }, this.options.timeout);
     });
   }
 
