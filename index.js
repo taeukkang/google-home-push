@@ -25,7 +25,8 @@ class GoogleHome {
     this.options.accent =
       this.options.accent === undefined ? "en" : options.accent;
 
-    this.options.timeout = this.options.timeout === undefined ? 5000 : options.timeout;
+    this.options.timeout =
+      this.options.timeout === undefined ? 5000 : options.timeout;
   }
 
   searchDevice(name = this.device.name) {
