@@ -1,6 +1,6 @@
 {
   "name": "google-home-push",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "Send push notifications to your Google Home device.",
   "main": "index.js",
   "scripts": {
