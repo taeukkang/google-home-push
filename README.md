@@ -7,7 +7,7 @@ $ npm install --save google-home-push
 ```
 
 ## Usage
-```
+```js
 const GoogleHome = require("google-home-push");
 
 // Pass the name or IP address of your device
@@ -19,7 +19,7 @@ myHome.push("https://example.com/music.mp3");
 
 ## Example
 ### Using different languages
-```
+```js
 let options = {
     language: "ko"
 };
