@@ -101,6 +101,7 @@ class GoogleHome {
 
             player.load(media, { autoplay: true }, (err, status) => {
               client.close();
+              resolve(true)
               console.log(`Pushed to device at ${this.device.ip}`);
             });
           });
