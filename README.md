@@ -45,7 +45,7 @@ Type: `Object`
 | Property | Type | Default | Description |
 | --- | --- | --- | ---|
 | language | string | `en` | Default language that would be used by the `.speak()` function |
-| accent | string | `en` | Default accent that would be used by the `.speak()` function |
+| speed | number | 1 | Default speed that would be used by the `.speak()` function |
 | timeout | number | `5000` | Duration for device searching in milliseconds |
 
 ### .speak(message, [language])

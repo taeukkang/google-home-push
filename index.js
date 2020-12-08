@@ -22,9 +22,10 @@ class GoogleHome {
 
     this.options.language =
       this.options.language === undefined ? "en" : options.language;
-    this.options.accent =
-      this.options.accent === undefined ? "en" : options.accent;
 
+    this.options.speed =
+      this.options.speed === undefined ? 1 : options.speed;
+    
     this.options.timeout =
       this.options.timeout === undefined ? 5000 : options.timeout;
   }
@@ -33,7 +34,7 @@ class GoogleHome {
     return new Promise((resolve, reject) => {
       browser.start();
 
-      browser.on("serviceUp", service => {
+      browser.on("serviceUp", (service) => {
         browser.stop();
 
         // Only use the first IP address in the array
@@ -60,20 +61,12 @@ class GoogleHome {
     }
 
     return new Promise((resolve, reject) => {
-      googleTTS(
-        message,
-        language ? language : this.options.language,
-        1,
-        3000,
-        this.options.accent
-      )
-        .then(url => {
-          this.push(url)
-            .then(resolve)
-            .catch(reject);
+      googleTTS(message, language ? language : this.options.language, this.options.speed)
+        .then((url) => {
+          this.push(url).then(resolve).catch(reject);
         })
         .catch(reject);
-    }).catch(reject => {
+    }).catch((reject) => {
       console.error(reject);
     });
   }
@@ -89,26 +82,23 @@ class GoogleHome {
       }
 
       const client = new GoogleCastClient();
-      client.connect(
-        this.device.ip,
-        () => {
-          client.launch(DefaultMediaReceiver, (err, player) => {
-            const media = {
-              contentId: url,
-              contentType: "audio/mp3",
-              streamType: "BUFFERED"
-            };
+      client.connect(this.device.ip, () => {
+        client.launch(DefaultMediaReceiver, (err, player) => {
+          const media = {
+            contentId: url,
+            contentType: "audio/mp3",
+            streamType: "BUFFERED",
+          };
 
-            player.load(media, { autoplay: true }, (err, status) => {
-              client.close();
-              resolve(status);
-              console.log(`Pushed to device at ${this.device.ip}`);
-            });
+          player.load(media, { autoplay: true }, (err, status) => {
+            client.close();
+            resolve(status);
+            console.log(`Pushed to device at ${this.device.ip}`);
           });
-        }
-      );
+        });
+      });
 
-      client.on("error", err => {
+      client.on("error", (err) => {
         reject(`Google Cast Client error:\n${err}`);
         client.close();
       });
