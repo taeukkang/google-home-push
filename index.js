@@ -99,7 +99,7 @@ class GoogleHome {
       });
 
       client.on("error", (err) => {
-        reject(`Google Cast Client error:\n${err}`);
+        reject(err);
         client.close();
       });
     });
